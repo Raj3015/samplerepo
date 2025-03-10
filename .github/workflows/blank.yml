@@ -26,6 +26,7 @@ jobs:
         run: |
           git log > teja.txt
           echo "//////////echoin the teja.txt file"
+          
           cat teja.txt
           commits=$(git log --format=%B -n 1)
           if ! [[ "$commits" =~ ^JIRA-[0-9]+ ]]; then
