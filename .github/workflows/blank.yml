@@ -20,11 +20,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          ref: ${{github.event.after}}
       - name: Check commit message format
         run: |
           # Fetch all commits in the PR
-          git log --format=%B ${{github.event.after}}
+           #git log --format=%B ${{github.event.after}}
+          PR_COMMITS=$(git log --format=%B ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }})
+          echo $PR_COMMITS
+          git log --format=%B ${{ github.event.before }}..${{ github.sha }}
 
         
           #commits=$(git log --format=%B -n 1)
