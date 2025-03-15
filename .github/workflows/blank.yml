@@ -24,6 +24,7 @@ jobs:
       - name: Check commit message format
         run: |
           # Fetch all commits in the PR
+          git fetch --prune --unshallow
           PR_COMMITS=$(git log --format=%B ${{ github.event.before }}..${{ github.sha }})
         
           #commits=$(git log --format=%B -n 1)
