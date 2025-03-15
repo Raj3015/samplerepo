@@ -26,6 +26,7 @@ jobs:
            #git log --format=%B ${{github.event.after}}
           PR_COMMITS=$(git log --format=%B ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }})
           echo $PR_COMMITS
+          echo "------------------------"
           git log --format=%B ${{ github.event.before }}..${{ github.sha }}
 
         
