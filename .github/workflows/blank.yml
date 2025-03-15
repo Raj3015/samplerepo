@@ -23,6 +23,7 @@ jobs:
           ref: ${{github.event.after}}
       - name: Check commit message format
         run: |
+          git fetch --prune --unshallow
           MSG=$(git log --format=%B  ${{github.event.after}})
           echo $MSG
         
