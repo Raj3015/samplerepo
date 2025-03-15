@@ -23,8 +23,8 @@ jobs:
           ref: ${{github.event.after}}
       - name: Check commit message format
         run: |
-          MSG=$(git log --format=%B  ${{github.event.after}})
-          echo $MSG
+          # Fetch all commits in the PR
+          PR_COMMITS=$(git log --format=%B ${{ github.event.before }}..${{ github.sha }})
         
           #commits=$(git log --format=%B -n 1)
           # if ! [[ "$commits" =~ ^JIRA-[0-9]+ ]]; then
